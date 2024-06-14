@@ -1,0 +1,119 @@
+[
+  {
+    "id": "AAAA",
+    "name": "Ion Cannon",
+    "creator": "Lycan Heavy Industries",
+    "description": "Flashes the target with ionizing radiation, tearing their very molecules apart and rendering them inert.",
+    "banned": "true",
+    "priceInCents": 2500000,
+    "inStock": "false"
+  },
+  {
+    "id": "BBBB",
+    "name": "Plasma Rifle",
+    "creator": "Nova Arms Corporation",
+    "description": "Fires a concentrated burst of plasma energy capable of melting through the toughest armor.",
+    "banned": "true",
+    "priceInCents": 4500000,
+    "inStock": "true"
+  },
+  {
+    "id": "CCCC",
+    "name": "Quantum Disruptor",
+    "creator": "QuantaTech Industries",
+    "description": "Disrupts the quantum cohesion of any material, causing it to disintegrate at the atomic level.",
+    "banned": "true",
+    "priceInCents": 3500000,
+    "inStock": "false"
+  },
+  {
+    "id": "DDDD",
+    "name": "Sonic Blaster",
+    "creator": "EchoTech Labs",
+    "description": "Emits a high-frequency sound wave that can incapacitate or disorient targets without physical contact.",
+    "banned": "false",
+    "priceInCents": 1200000,
+    "inStock": "true"
+  },
+  {
+    "id": "EEEE",
+    "name": "Laser Sword",
+    "creator": "StarForge Inc.",
+    "description": "A blade of pure energy capable of cutting through nearly any material with ease.",
+    "banned": "false",
+    "priceInCents": 2200000,
+    "inStock": "true"
+  },
+  {
+    "id": "FFFF",
+    "name": "Nano Swarm Grenade",
+    "creator": "MicroMight Defense",
+    "description": "Releases a swarm of nanobots that can dismantle machinery and organic matter at a microscopic level.",
+    "banned": "true",
+    "priceInCents": 3000000,
+    "inStock": "false"
+  },
+  {
+    "id": "GGGG",
+    "name": "Electro-Magnetic Pulse Cannon",
+    "creator": "VoltTech Industries",
+    "description": "Generates a massive EMP blast that can disable electronic devices and vehicles within a wide radius.",
+    "banned": "false",
+    "priceInCents": 1800000,
+    "inStock": "true"
+  },
+  {
+    "id": "HHHH",
+    "name": "Graviton Hammer",
+    "creator": "Gravitas Arms",
+    "description": "Creates a localized gravitational field that can crush targets with immense force.",
+    "banned": "false",
+    "priceInCents": 2600000,
+    "inStock": "true"
+  },
+  {
+    "id": "IIII",
+    "name": "Dark Matter Rifle",
+    "creator": "BlackStar Technologies",
+    "description": "Fires a projectile composed of dark matter, capable of bypassing most forms of shielding and armor.",
+    "banned": "true",
+    "priceInCents": 5000000,
+    "inStock": "false"
+  },
+  {
+    "id": "JJJJ",
+    "name": "Photon Grenade",
+    "creator": "Lumina Defense",
+    "description": "Detonates with a burst of intense light and heat, capable of incinerating targets within a radius.",
+    "banned": "true",
+    "priceInCents": 2700000,
+    "inStock": "true"
+  },
+  {
+    "id": "K4K4",
+    "name": "Cryo Launcher",
+    "creator": "Frost Industries",
+    "description": "Launches projectiles that explode into a cloud of supercooled particles, freezing targets on contact.",
+    "banned": "false",
+    "priceInCents": 1900000,
+    "inStock": "true"
+  },
+  {
+    "id": "LLLL",
+    "name": "Goober Cannon",
+    "creator": "Mark K. Willis",
+    "description": "Launches silly little goobers at people. A great diversion.",
+    "banned": "false",
+    "priceInCents": 4000000,
+    "inStock": "true"
+  },
+  {
+    "id": "8LPK",
+    "name": "Super Gun",
+    "creator": "Red Guy Industries",
+    "description": "Fires condensed supernovae at the target",
+    "banned": "true",
+    "priceInCents": "99999999",
+    "inStock": "false"
+  }
+]
