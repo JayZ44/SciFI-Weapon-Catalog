@@ -105,6 +105,19 @@ function index(weapons) {
   console.table(table.toString());
 }
 
+function show(weapons, id) {
+  if (!weapons) {
+    return console.log("There are no weapons to display!");
+  }
+  if (!id) {
+    return console.log("Please specify an ID!");
+  }
+
+  const target = weapons.find((weapon) => weapon.id === id);
+  if (target) {
+  }
+}
+
 module.exports = {
   create,
   destroy,

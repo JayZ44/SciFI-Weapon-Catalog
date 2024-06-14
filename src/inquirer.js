@@ -13,7 +13,8 @@ console.log(" ");
 //If they are buying, Index, else ask more questions!
 //How do we stop questioning when one answer is chosen and continue questioning when another is chosen?
 
-const questions1 = [
+//QUESTIONS--------------------
+const starterQ = [
   {
     type: "list",
     name: "list_question",
@@ -28,12 +29,13 @@ const questions1 = [
       "Buyin'",
       "Sellin'",
       "Leavin'",
+      "Editin'",
       "Just show me the catalog please.",
     ],
   },
 ];
 
-const questions2 = [
+const whichOneQ = [
   {
     type: "input",
     name: "which_one",
@@ -41,28 +43,61 @@ const questions2 = [
   },
 ];
 
+const editQ = [
+  {
+    type: "input",
+    name: "editQ",
+    message: "Alright! Just type in the ID of the weapon you wanna edit!",
+  },
+];
+
+//END OF QUESTIONS--------------------
+
 function askMore(query) {
   return inquirer.prompt(query);
 }
 
 inquirer
-  .prompt(questions1)
+  .prompt(starterQ)
   .then((answers) => {
     // console.log(`"${answers.list_question}", huh? I don't care. Get lost.`);
+
+    //LEAVIN'
     if (answers.buy_or_sell === "Leavin'") {
       console.log("Ok, cya later buddy!");
     }
 
+    //BUYIN'
     if (
       answers.buy_or_sell === "Buyin'" ||
       answers.buy_or_sell === "Just show me the catalog please."
     ) {
       console.log("Alright, here's what we got!");
+      askMore(whichOneQ).then((newAns) => {
+        const stopLoadingAnimation = startLoadingAnimation();
+        setTimeout(() => {
+          stopLoadingAnimation();
+          show(weapons, newAns.which_one);
+        }, 1200);
+      });
+
       const stopLoadingAnimation = startLoadingAnimation();
       setTimeout(() => {
         stopLoadingAnimation();
         index(weapons);
+        console.log("Press any button to continue!");
       }, 1200);
+    }
+
+    //EDITIN'
+    if (answers.buy_or_sell === "Editin'") {
+      askMore(editQ).then((answers) => {
+        const stopLoadingAnimation = startLoadingAnimation();
+        setTimeout(() => {
+          stopLoadingAnimation();
+          show(weapons, answers.editQ);
+        }, 1200);
+      });
     }
   })
 
@@ -73,4 +108,3 @@ inquirer
       console.log("Something else went wrong");
     }
   });
-// .then(askMore(questions2));
