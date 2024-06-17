@@ -1,13 +1,14 @@
-const { create, destroy, index, show } = require("./src/controllers");
+const { create, destroy, index, show, update } = require("./src/controllers");
 const {
   stopLoadingAnimation,
   startLoadingAnimation,
 } = require("./src/spinners");
-const { readJSONFile, writeJSONFile, makeTable } = require("./src/helpers");
+const { readJSONFile, writeJSONFile } = require("./src/helpers");
 const weapons = readJSONFile(".", "weapons.json");
 const log = console.log;
 
 function run() {
+  let updateWeapon = false;
   let writeToFile = false;
   let updatedWeapons = [];
   const action = process.argv[2];
@@ -18,12 +19,11 @@ function run() {
   const priceInCents = process.argv[7];
   const inStock = process.argv[8];
 
-  const stopLoadingAnimation = startLoadingAnimation();
+  const loadingStopper = startLoadingAnimation();
 
-  switch (action) {
-    case "create":
-      setTimeout(() => {
-        stopLoadingAnimation();
+  const handleAction = () => {
+    switch (action) {
+      case "create":
         updatedWeapons = create(
           weapons,
           name,
@@ -33,41 +33,45 @@ function run() {
           priceInCents,
           inStock
         );
-      }, 1200);
-
-      writeToFile = true;
-      break;
-    case "destroy":
-      setTimeout(() => {
-        stopLoadingAnimation();
+        writeToFile = true;
+        break;
+      case "destroy":
         updatedWeapons = destroy(weapons, process.argv[3]);
-      }, 1200);
-
-      writeToFile = true;
-      log(updatedWeapons);
-      break;
-    case "index":
-      setTimeout(() => {
-        stopLoadingAnimation();
+        writeToFile = true;
+        break;
+      case "index":
         index(weapons);
-      }, 1200);
-      break;
-
-    case "show":
-      setTimeout(() => {
-        stopLoadingAnimation();
+        // console.log(weapons);
+        break;
+      case "show":
         show(weapons, process.argv[3]);
-      }, 1200);
+        break;
+      case "update":
+        updatedWeapons = update(weapons, process.argv[3]);
+        console.log("UPDATED WEAPONS", updatedWeapons);
+        writeToFile = true;
+        break;
+      default:
+        log("Invalid action specified.");
+        break;
+    }
 
-      break;
-    default:
-      log("There was an error :(");
-  }
+    // Stop the loading animation
+    loadingStopper();
 
-  //npm run create "Super Gun" "Red Guy Industries" "Fires condensed supernovae at the target" true 99999999 false
-  if (writeToFile) {
-    writeJSONFile(".", "weapons.json", updatedWeapons);
-  }
+    if (writeToFile) {
+      writeJSONFile(".", "weapons.json", updatedWeapons);
+      console.log("Data updated successfully.");
+      const updatedData = readJSONFile(".", "weapons.json");
+      //   console.log("Updated Data:", updatedData);
+    }
+
+    if (updateWeapon) {
+      //   writeJSONFile();
+    }
+  };
+
+  setTimeout(handleAction, 1200);
 }
 
 run();

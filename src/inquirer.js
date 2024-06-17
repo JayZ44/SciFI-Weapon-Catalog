@@ -1,9 +1,9 @@
-const { create, destroy, index, show } = require("./controllers");
+const { create, destroy, index, show, update2 } = require("./controllers");
 const { stopLoadingAnimation, startLoadingAnimation } = require("./spinners");
 const { readJSONFile, writeJSONFile, makeTable } = require("./helpers");
 const weapons = readJSONFile(".", "weapons.json");
 const log = console.log;
-
+let updatedWeapons = [];
 const inquirer = require("inquirer");
 console.log(" ");
 console.log("----------- The SciFi Weapon Catalog! -----------");
@@ -48,6 +48,39 @@ const editQ = [
     type: "input",
     name: "editQ",
     message: "Alright! Just type in the ID of the weapon you wanna edit!",
+  },
+];
+
+const editQ2 = [
+  {
+    type: "input",
+    name: "changeName",
+    message: `What would you like to change the name to?`,
+  },
+  {
+    type: "input",
+    name: "changeCreator",
+    message: `What would you like to change the creator to?`,
+  },
+  {
+    type: "input",
+    name: "changeDescription",
+    message: `What would you like to change the description to?`,
+  },
+  {
+    type: "input",
+    name: "changeBanned",
+    message: `What would you like to change the ban status to?`,
+  },
+  {
+    type: "input",
+    name: "changePrice",
+    message: `What would you like to change the price to?`,
+  },
+  {
+    type: "input",
+    name: "changeStock",
+    message: `What would you like to change the stock status to?`,
   },
 ];
 
@@ -96,6 +129,31 @@ inquirer
         setTimeout(() => {
           stopLoadingAnimation();
           show(weapons, answers.editQ);
+
+          //Second Round of Questions ----------
+          askMore(editQ2).then((answers2) => {
+            const stopLoadingAnimation = startLoadingAnimation();
+            setTimeout(() => {
+              stopLoadingAnimation();
+              let editTarget = weapons.find(
+                (weapon) => weapon.id === answers.editQ
+              );
+              console.log(weapons, editTarget, answers.editQ, answers2);
+              let updatedWeapons = update2(
+                weapons,
+                answers.editQ,
+                answers2.changeName,
+                answers2.changeCreator,
+                answers2.changeDescription,
+                answers2.changeBanned,
+                answers2.changePrice,
+                answers2.changeStock
+              );
+              console.log("UPDATED WEAPONS", updatedWeapons);
+              writeJSONFile("..", "weapons.json", updatedWeapons);
+            }, 1200);
+          });
+          //End of second round ----------
         }, 1200);
       });
     }

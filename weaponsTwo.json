@@ -1,11 +1,12 @@
 [
   {
     "id": "AAAA",
-    "name": "a",
-    "creator": "a",
-    "description": "a",
-    "banned": "a",
-    "priceInCents": "a"
+    "name": "Ion Cannon",
+    "creator": "Lycan Heavy Industries",
+    "description": "Flashes the target with ionizing radiation, tearing their very molecules apart and rendering them inert.",
+    "banned": "true",
+    "priceInCents": 2500000,
+    "inStock": "false"
   },
   {
     "id": "BBBB",
