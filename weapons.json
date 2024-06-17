@@ -1,11 +1,12 @@
 [
   {
     "id": "AAAA",
-    "name": "a",
-    "creator": "a",
-    "description": "a",
-    "banned": "a",
-    "priceInCents": "a"
+    "name": "Cinta",
+    "creator": "Duviri",
+    "description": "A beautiful longbow capable of firing devastating arrows or the wrath of the sun.",
+    "banned": "false",
+    "priceInCents": "9999999999",
+    "inStock": "true"
   },
   {
     "id": "BBBB",

@@ -132,26 +132,22 @@ inquirer
 
           //Second Round of Questions ----------
           askMore(editQ2).then((answers2) => {
-            const stopLoadingAnimation = startLoadingAnimation();
-            setTimeout(() => {
-              stopLoadingAnimation();
-              let editTarget = weapons.find(
-                (weapon) => weapon.id === answers.editQ
-              );
-              console.log(weapons, editTarget, answers.editQ, answers2);
-              let updatedWeapons = update2(
-                weapons,
-                answers.editQ,
-                answers2.changeName,
-                answers2.changeCreator,
-                answers2.changeDescription,
-                answers2.changeBanned,
-                answers2.changePrice,
-                answers2.changeStock
-              );
-              console.log("UPDATED WEAPONS", updatedWeapons);
-              writeJSONFile("..", "weapons.json", updatedWeapons);
-            }, 1200);
+            let editTarget = weapons.find(
+              (weapon) => weapon.id === answers.editQ
+            );
+            console.log(weapons, editTarget, answers.editQ, answers2);
+            let updatedWeapons = update2(
+              weapons,
+              answers.editQ,
+              answers2.changeName,
+              answers2.changeCreator,
+              answers2.changeDescription,
+              answers2.changeBanned,
+              answers2.changePrice,
+              answers2.changeStock
+            );
+            console.log("UPDATED WEAPONS", updatedWeapons);
+            writeJSONFile(".", "weapons.json", updatedWeapons);
           });
           //End of second round ----------
         }, 1200);
